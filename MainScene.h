@@ -3,16 +3,31 @@
 
 union UIntInByte {
 	int i;
-	unsigned char c[4];
+	char c[4];
+};
+
+struct HeaderChunk {
+	UIntInByte type, size, format, track, division;
+};
+
+struct TrackChunk {
+	UIntInByte type, size;
+	char *data;
 };
 
 class MainScene {
 	FILE* fp;
 	char* filename;
-	int Write(UIntInByte* input, int size);
+	HeaderChunk header;
+	TrackChunk* track;
+	bool IsLittleEndian;
+
+	void MidiRead();
+	int Write(UIntInByte input, int size);
 	void MidiWrite();
+	void ConvertEndian(UIntInByte input, size_t s);
 public:
 	MainScene();
-	void update();
-	void draw();
+	void Update();
+	void Draw();
 };

@@ -10,8 +10,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	MainScene mainScene;
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		Input::update();
-		mainScene.update();
-		mainScene.draw();
+		mainScene.Update();
+		mainScene.Draw();
 		if (Input::Key(KEY_INPUT_ESCAPE) == 1) break;
 	}
 	DxLib_End();
