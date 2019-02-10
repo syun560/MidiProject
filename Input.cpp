@@ -37,11 +37,7 @@ void Input::Mouse(int *x,int *y){
 }
 
 void Input::draw(){
-	static int AimSize = 20;
-	static int LineSize = 30;
-	DrawCircle(mMouseX,mMouseY,AimSize,YELLOW,FALSE);
-	DrawLine(mMouseX - LineSize,mMouseY,mMouseX + LineSize,mMouseY,YELLOW);
-	DrawLine(mMouseX ,mMouseY - LineSize,mMouseX ,mMouseY + LineSize,YELLOW);
+	
 }
 
 int Input::Key(int k){

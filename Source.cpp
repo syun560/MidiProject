@@ -3,7 +3,7 @@
 #include "MainScene.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-	SetMainWindowText("MIDIê∂ê¨");
+	SetMainWindowText("MIDIProject");
 	ChangeWindowMode(TRUE);
 	if (DxLib_Init() == -1)	return -1;
 	SetDrawScreen(DX_SCREEN_BACK);

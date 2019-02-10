@@ -4,7 +4,6 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-
 MainScene::MainScene() {
 	filename = "sample.mid";
 }
@@ -29,7 +28,7 @@ int ConvertDelta(int delta) {
 }
 
 // 入力する関数
-int MainScene::Write(void *input, int size) {
+int MainScene::Write(UIntInByte *input, int size) {
 	convertEndian(input, size);
 	fwrite(input, size, 1, fp);
 	return 0;
@@ -42,19 +41,20 @@ void MainScene::MidiWrite() {
 	}
 	
 	// ヘッダチャンク
-	int ctype = 0x4d546864;
-	int csize = 6;
-	short format = 1;
-	short tracks = 2;
-	short division = 480;
+	UIntInByte ctype, csize, format, track, division;
+	ctype.i = 0x4d546864; //MThd
+	csize.i = 6;
+	format.i = 1;
+	track.i = 2;
+	division.i = 480;
 	Write(&ctype, 4);
 	Write(&csize, 4);
 	Write(&format, 2);
-	Write(&tracks, 2);
+	Write(&track, 2);
 	Write(&division, 2);
 	
 	// トラックチャンク（Conductor）
-	int type = 0x4d54726b;
+	int type = 0x4d54726b; // MTrk
 	int size = 0x13; // データ長19Byte
 	int tempo = 0x00FF5103; //デルタタイム0にテンポ設定
 	int tempo2 = 0x07A12000; // テンポを120（0x07A120マイクロ秒）に指定、デルタタイム0に

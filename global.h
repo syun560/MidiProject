@@ -1,7 +1,5 @@
 #pragma once
 #include "DxLib.h"
-
-
 #define _CRT_SECURE_NO_WARNINGS
 
 //êF
