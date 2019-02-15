@@ -19,10 +19,14 @@ class MainScene {
 	HeaderChunk header;
 	TrackChunk* track;
 	bool IsLittleEndian;
+	char* inputFile;
+	char* outputFile;
 
 	void MidiRead();
+	void Troll(int num);
 	void MidiWrite();
 	void ConvertEndian(UIntInByte& input, size_t s);
+	void Print();
 public:
 	MainScene();
 	void Update();
