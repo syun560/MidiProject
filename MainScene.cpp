@@ -2,7 +2,6 @@
 #include "MainScene.h"
 #include "Input.h"
 #include "stdio.h"
-#include "stdlib.h"
 #include <string.h>
 
 static unsigned char rest[5] = {0x8F, 0x00, 0x80, 0x30, 0x00};
@@ -152,7 +151,7 @@ void MainScene::Update() {
 		clsDx();
 	}
 	if (Input::Key(KEY_INPUT_T) == 1) {
-		Troll(2);
+		Troll(1);
 	}
 	if (Input::Key(KEY_INPUT_D) == 1) {
 		StopMusic();
