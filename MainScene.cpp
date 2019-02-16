@@ -10,7 +10,7 @@ MainScene::MainScene() {
 	int check = 1;
 	if (*(char *)&check) IsLittleEndian = true;
 	else IsLittleEndian = false;
-	inputFile = "shizuka.mid";
+	inputFile = "kaeru.mid";
 	outputFile = "output.mid";
 }
 
@@ -151,7 +151,7 @@ void MainScene::Update() {
 		clsDx();
 	}
 	if (Input::Key(KEY_INPUT_T) == 1) {
-		Troll(1);
+		Troll(2);
 	}
 	if (Input::Key(KEY_INPUT_D) == 1) {
 		StopMusic();
@@ -164,10 +164,9 @@ void MainScene::Update() {
 void MainScene::Draw(){
 	if (IsLittleEndian) DrawFormatString(300, 0, WHITE, "リトルエンディアンです。");
 	else DrawFormatString(300, 0, WHITE, "ビッグエンディアンです。");
-	DrawFormatString(400, 100, WHITE, "Oキーで読込");
-	DrawFormatString(400, 120, WHITE, "Sキーで保存");
-	DrawFormatString(400, 140, WHITE, "Aキーで再生");
-	DrawFormatString(400, 180, WHITE, "Dキーで停止");
-	DrawFormatString(400, 200, WHITE, "Cキーでクリア");
-	DrawFormatString(400, 220, WHITE, "Tキーで輪唱");
+	static const int INFO_X = 400;
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA,125);
+	DrawBox(INFO_X - 20, 80, FMX - 20, 240, WHITE,TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	DrawFormatString(INFO_X, 80, WHITE, "操作方法\nOキーで読込\nSキーで保存\nAキーで再生\nDキーで停止\nCキーでクリア\nTキーで輪唱\n\nESCで終了");
 }
